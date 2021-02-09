@@ -35,10 +35,23 @@ function OnLinkClick() {
   }
 
 function getDailySurvey(){
-var url  = "http://zipcloud.ibsnet.co.jp/api/search?zipcode=2500011";
-fetch(url)
-  .then(response => response.json())
-  .then(data => console.log(data));
+  var url = "http://localhost:5000/hospital";
+  fetch(url)
+  .then(function (data) {
+    return data.json(); // 読み込むデータをJSONに設定
+  })
+  .then(function (json) {
+    for (var i = 0; i < json.length; i++) {
+      var train = json[i].facilityName;
+      var company = json[i].zipCode;
+
+      //表形式で遅延路線を表示する
+      var row = document.getElementById('hospital-list').insertRow();
+      row.insertCell().textContent = i + 1;
+      row.insertCell().textContent = train;
+      row.insertCell().textContent = company;
+    }
+  });
 }
 
 
