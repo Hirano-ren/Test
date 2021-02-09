@@ -60,11 +60,12 @@ function getDailySurvey(){
       }
     });
     */
-   // XMLHttpRequestオブジェクトの作成
-    var request = new XMLHttpRequest();
+var url  = "https://opendata.corona.go.jp/api/covid19DailySurvey?prefName=東京都";
+// XMLHttpRequestオブジェクトの作成
+var request = new XMLHttpRequest();
 
 // URLを開く
-    request.open('GET', url, true);
+request.open('GET', url , true);
 
 // レスポンスが返ってきた時の処理を記述 
 request.onload = function () {
