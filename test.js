@@ -35,41 +35,20 @@ function OnLinkClick() {
   }
 
 function getDailySurvey(){
-  var url = 'https://opendata.corona.go.jp/api/covid19DailySurvey?facilityName=創成東病院'; 
-  /*
-  var row = document.getElementById('hospital-list').insertRow();
-  fetch(url)
-    .then(function (data) {
-      return data.json(); // 読み込むデータをJSONに設定
-    })
-    .then(function (json) {
-      for (var i = 0; i < json.length; i++) {
-
-        var facilityName = json[i].facilityName; //病院名
-        var facilityAddr = json[i].facilityAddr; //住所
-        var facilityType = json[i].facilityType; //種別
-        var ansType = json[i].ansType; //状態
-        var latitude = json[i].latitude; //緯度
-        var longitude = json[i].longitude; //経度
-  
-        //表形式で遅延路線を表示する
-        row.insertCell().textContent = facilityName;
-        row.insertCell().textContent = facilityAddr;
-        row.insertCell().textContent = facilityType;
-        row.insertCell().textContent = ansType;
-      }
-    });
-    */
 var url  = "https://opendata.corona.go.jp/api/covid19DailySurvey?prefName=東京都";
-// XMLHttpRequestオブジェクトの作成
-var request = new XMLHttpRequest();
+dataObj={prefName:'東京都'};
+var requestParams = {
+    serviceId:'serviceA',//サービスIDを指定
+    type:'json'//レスポンス形式を指定
+};
+var option = {
+    url:url,
+    callback:function(data){/* ここに処理を記述 */},
+    errorHandler:function(err){/* ここに失敗時の処理を記述 */}
+};
+MuRequest.send(dataObj,requestParams,option);
+}
 
-// URLを開く
-request.open('GET', url , true);
-
-// レスポンスが返ってきた時の処理を記述 
-request.onload = function () {
-  // レスポンスが返ってきた時の処理
 }
 
 // リクエストをURLに送信
