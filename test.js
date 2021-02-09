@@ -35,19 +35,12 @@ function OnLinkClick() {
   }
 
 function getDailySurvey(){
-var url  = "https://opendata.corona.go.jp/api/covid19DailySurvey?prefName=東京都";
-dataObj={prefName:'東京都'};
-var requestParams = {
-    serviceId:'serviceA',//サービスIDを指定
-    type:'json'//レスポンス形式を指定
-};
-var option = {
-    url:url,
-    callback:function(data){/* ここに処理を記述 */},
-    errorHandler:function(err){/* ここに失敗時の処理を記述 */}
-};
-MuRequest.send(dataObj,requestParams,option);
+var url  = "http://zipcloud.ibsnet.co.jp/api/search?zipcode=2500011";
+fetch(url)
+  .then(response => response.json())
+  .then(data => console.log(data));
 }
+
 
 }
 
