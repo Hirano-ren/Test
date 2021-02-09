@@ -31,46 +31,26 @@ function OnLinkClick() {
         row.insertCell().textContent = train;
         row.insertCell().textContent = company;
       }
-    });
+    });   
   }
 
-function getDailySurvey(){
-  var url = 'https://opendata.corona.go.jp/api/covid19DailySurvey?facilityName=創成東病院'; 
-  /*
-  var row = document.getElementById('hospital-list').insertRow();
+async function getDailySurvey(){
+  var url = "http://localhost:5000/hospital";
   fetch(url)
-    .then(function (data) {
-      return data.json(); // 読み込むデータをJSONに設定
-    })
-    .then(function (json) {
-      for (var i = 0; i < json.length; i++) {
+  .then(function (data) {
+    return data.json(); // 読み込むデータをJSONに設定
+  })
+  .then(function (json) {
+    for (var i = 0; i < json.length; i++) {
+      var train = json[i].facilityName;
+      var company = json[i].zipCode;
 
-        var facilityName = json[i].facilityName; //病院名
-        var facilityAddr = json[i].facilityAddr; //住所
-        var facilityType = json[i].facilityType; //種別
-        var ansType = json[i].ansType; //状態
-        var latitude = json[i].latitude; //緯度
-        var longitude = json[i].longitude; //経度
-  
-        //表形式で遅延路線を表示する
-        row.insertCell().textContent = facilityName;
-        row.insertCell().textContent = facilityAddr;
-        row.insertCell().textContent = facilityType;
-        row.insertCell().textContent = ansType;
-      }
-    });
-    */
-   // XMLHttpRequestオブジェクトの作成
-    var request = new XMLHttpRequest();
-
-// URLを開く
-    request.open('GET', url, true);
-
-// レスポンスが返ってきた時の処理を記述 
-request.onload = function () {
-  // レスポンスが返ってきた時の処理
+      //表形式で遅延路線を表示する
+      var row = document.getElementById('hospital-list').insertRow();
+      row.insertCell().textContent = i + 1;
+      row.insertCell().textContent = train;
+      row.insertCell().textContent = company;
+    }
+  });
 }
 
-// リクエストをURLに送信
-request.send();
-}
