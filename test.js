@@ -31,7 +31,7 @@ function OnLinkClick() {
         row.insertCell().textContent = train;
         row.insertCell().textContent = company;
       }
-    });
+    });   
   }
 
 async function getDailySurvey(){
