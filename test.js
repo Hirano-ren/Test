@@ -53,10 +53,3 @@ function getDailySurvey(){
     }
   });
 }
-
-
-}
-
-// リクエストをURLに送信
-request.send();
-}
