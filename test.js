@@ -35,7 +35,7 @@ function OnLinkClick() {
   }
 
 async function getDailySurvey(){
-  var url = "https://opendata.corona.go.jp/api/covid19DailySurvey?facilityName=創成東病院";
+  var url = "http://localhost:5000/hospital";
   fetch(url)
   .then(function (data) {
     return data.json(); // 読み込むデータをJSONに設定
