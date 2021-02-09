@@ -34,7 +34,7 @@ function OnLinkClick() {
     });
   }
 
-function getDailySurvey(){
+async function getDailySurvey(){
   var url = "http://localhost:5000/hospital";
   fetch(url)
   .then(function (data) {
@@ -53,3 +53,4 @@ function getDailySurvey(){
     }
   });
 }
+
